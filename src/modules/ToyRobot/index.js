@@ -6,21 +6,11 @@ import {
   RIGHT,
   MAX_UNIT,
   MIN_UNIT,
-  MOVEMENT_MAP
+  MOVEMENT_MAP,
+  DIRECTIONS_MAP
 } from "../../constants";
 
 const isNil = value => typeof value === "undefined" || value === null;
-
-const directionsMap = {
-  EAST: 0,
-  SOUTH: 90,
-  WEST: 180,
-  NORTH: 270,
-  getDirectionFromDegree: function (degree) {
-    return Object.keys(this)
-      .filter(direction => this[direction] === degree)[0]
-  }
-};
 
 const validateUnits = (x, y) => {
   const isValid = value => (value >= MIN_UNIT && value <= MAX_UNIT);
@@ -40,11 +30,11 @@ export function ToyRobot () {
 
   const placeRobot = (place = "") => {
     const [xPlace, yPlace, placeDirection] = typeof place === "string" ? place.split(",") : "";
-    if (isNil(xPlace) || isNil(yPlace) || isNil(placeDirection) || isNil(directionsMap[placeDirection])) {
+    if (isNil(xPlace) || isNil(yPlace) || isNil(placeDirection) || isNil(DIRECTIONS_MAP[placeDirection])) {
       return ["ERROR: Invalid position for PLACE", ""];
     }
     setUnits(xPlace, yPlace);
-    directionInDegree = directionsMap[placeDirection];
+    directionInDegree = DIRECTIONS_MAP[placeDirection];
     isPlacedOnTable = true;
     return ["", ""];
   };
@@ -69,7 +59,7 @@ export function ToyRobot () {
   };
 
   const reportRobotPlace = () => {
-    return ["", `${unitX},${unitY},${directionsMap.getDirectionFromDegree(directionInDegree)}`];
+    return ["", `${unitX},${unitY},${DIRECTIONS_MAP.getDirectionFromDegree(directionInDegree)}`];
   };
 
   /*
