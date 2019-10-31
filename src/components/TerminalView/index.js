@@ -1,11 +1,13 @@
 import React from "react";
 import Terminal from "terminal-in-react";
 import "./index.css";
-import { toyRobotModule } from "../../modules/ToyRobot";
+import { ToyRobot } from "../../modules/ToyRobot";
 import { LEFT, MOVE, PLACE, REPORT, RIGHT } from "../../constants";
 
+const toyRobotInstance = new ToyRobot();
+
 const TerminalView = () => {
-  const { getInstructionOutput } = toyRobotModule;
+  const { getInstructionOutput } = toyRobotInstance;
 
   const commandFn = command => (args, print) => {
     /* Can do something fancy with error message in future
