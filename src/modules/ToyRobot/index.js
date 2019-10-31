@@ -45,7 +45,7 @@ export function ToyRobot () {
     const newUnitY = unitY + variance.y;
     if (validateUnits(newUnitX, newUnitY)) {
       setUnits(newUnitX, newUnitY);
-      return ["", "", { unitX, unitY }];
+      return ["", ""];
     }
     return ["ERROR: MOVE is not allowed in current direction. Try LEFT or RIGHT before MOVE", ""];
   };
@@ -72,7 +72,7 @@ export function ToyRobot () {
       return ["", ""];
     }
     if (!isPlacedOnTable && command !== PLACE) {
-      return ["ERROR: Toy robot is not placed on table yet", "", { globalError: true }];
+      return ["ERROR: Toy robot is not placed on table yet", "" ];
     }
     switch (command) {
       case PLACE:

@@ -39,7 +39,6 @@ it("should not allow MOVE without PLACE command first", () => {
   const props = { command: "MOVE", args: { _: [] } };
   // const getInstructionOutput = new Object(toyRobotModule.getInstructionOutput);
   const [error, output, stuff] = toyRobotInstance.getInstructionOutput(props);
-  console.log("stuff is ", stuff)
   expect(output).toBe("");
   expect(error).not.toBe("");
 });
