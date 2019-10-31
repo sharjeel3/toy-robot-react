@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.css';
+import TerminalView from "./components/TerminalView";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <TerminalView />
   );
 }
 
