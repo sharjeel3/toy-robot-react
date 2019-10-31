@@ -11,7 +11,7 @@ const TerminalView = () => {
     Some commands do not return an output for print on screen */
     const [error, output] = getInstructionOutput({ command, args });
     if (error) {
-      print(error.message);
+      print(error);
     } else if (output) {
       print(output);
     }

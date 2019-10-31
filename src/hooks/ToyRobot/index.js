@@ -25,11 +25,22 @@ export const useToyRobotHook = () => {
     // more to come
   };
 
+  /*
+    Function getInstructionOutput
+    Takes: Input command and arguments
+    Returns: [error, output]
+   */
   const getInstructionOutput = ({ command, args }) => {
-    return [null, undefined];
+    return ["", ""];
   };
 
   return {
     getInstructionOutput
   };
+};
+
+export const ToyRobotHookContainer = () => {
+  const { getInstructionOutput } = useToyRobotHook();
+  const [error, output] = getInstructionOutput({ command: "", args: { _: [] } });
+  return <div data-output={output} data-error={error} />;
 };
