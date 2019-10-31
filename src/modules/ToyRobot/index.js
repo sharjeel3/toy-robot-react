@@ -18,9 +18,9 @@ const validateUnits = (x, y) => {
 };
 
 export function ToyRobot () {
-  let unitX = undefined,
-    unitY = undefined,
-    directionInDegree = undefined,
+  let unitX,
+    unitY,
+    directionInDegree,
     isPlacedOnTable = false;
 
   const setUnits = (x, y) => {
