@@ -1,10 +1,10 @@
 import React from "react";
 import Terminal from "terminal-in-react";
 import "./index.css";
-import { useToyRobotHook } from "../../hooks/ToyRobot";
+import { toyRobotModule } from "../../modules/ToyRobot";
 
 const TerminalView = () => {
-  const { getInstructionOutput } = useToyRobotHook();
+  const { getInstructionOutput } = toyRobotModule;
 
   const commandFn = command => (args, print) => {
     /* Can do something fancy with error message in future
