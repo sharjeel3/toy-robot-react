@@ -2,6 +2,7 @@ import React from "react";
 import Terminal from "terminal-in-react";
 import "./index.css";
 import { toyRobotModule } from "../../modules/ToyRobot";
+import { LEFT, MOVE, PLACE, REPORT, RIGHT } from "../../constants";
 
 const TerminalView = () => {
   const { getInstructionOutput } = toyRobotModule;
@@ -17,13 +18,7 @@ const TerminalView = () => {
     }
   };
 
-  const commandsList = [
-    "PLACE",
-    "MOVE",
-    "LEFT",
-    "RIGHT",
-    "REPORT"
-  ];
+  const commandsList = [LEFT, MOVE, PLACE, REPORT, RIGHT];
 
   const terminalCommands = Object.assign({},
     ...commandsList.map(cmd => ({

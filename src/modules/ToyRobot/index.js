@@ -1,3 +1,5 @@
+import { LEFT, MOVE, PLACE, REPORT, RIGHT } from "../../constants";
+
 const isNil = value => typeof value === "undefined" || value === null;
 
 const directionsMap = {
@@ -30,15 +32,15 @@ export const toyRobotModule = (() => {
   };
 
   const moveRobot = () => {
-    // more to come
+    return ["", ""];
   };
 
   const turnRobotLeft = () => {
-    // more to come
+    return ["", ""];
   };
 
   const turnRobotRight = () => {
-    // more to come
+    return ["", ""];
   };
 
   const reportRobotPlace = () => {
@@ -48,6 +50,12 @@ export const toyRobotModule = (() => {
     return ["ERROR: Toy robot is not placed on table yet", ""];
   };
 
+  const movementHandler = ({ command, args }) => {
+    if (!isPlacedOnTable) {
+      return ["ERROR: Toy robot is not placed on table yet", ""];
+    }
+  }
+
   /*
     Function getInstructionOutput
     Takes: Input command and arguments
@@ -55,10 +63,14 @@ export const toyRobotModule = (() => {
    */
   const getInstructionOutput = ({ command, args }) => {
     switch (command) {
-      case "PLACE":
+      case PLACE:
         return placeRobot(args._[0]);
-      case "REPORT":
+      case REPORT:
         return reportRobotPlace();
+      case MOVE:
+      case LEFT:
+      case RIGHT:
+        return movementHandler({ command, args });
       default:
         return ["", ""];
     }
