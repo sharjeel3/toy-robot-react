@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render terminal without crashing 1`] = `
+<div
+  className="terminal"
+>
+  <div
+    className="terminal-base sc-bdVaJa gSZAyM"
+  >
+    <div
+      style={
+        Object {
+          "animation": "fadeIn 0.18s ease-in",
+          "color": "green",
+          "fontFamily": "'Inconsolata', monospace",
+          "fontSize": "1em",
+          "fontWeight": "bold",
+          "height": "100%",
+        }
+      }
+    >
+      <div
+        className="sc-bxivhb hdqhPL"
+        style={
+          Object {
+            "maxWidth": "100%",
+          }
+        }
+      >
+        <svg
+          height="20"
+          width="100"
+        >
+          <circle
+            cx="24"
+            cy="14"
+            fill="red"
+            onClick={[Function]}
+            r="5"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          />
+          <circle
+            cx="44"
+            cy="14"
+            fill="orange"
+            onClick={[Function]}
+            r="5"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          />
+          <circle
+            cx="64"
+            cy="14"
+            fill="green"
+            onClick={[Function]}
+            r="5"
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
+          />
+        </svg>
+      </div>
+      <div
+        className="sc-jTzLTM lfnIny"
+        style={
+          Object {
+            "maxWidth": "100%",
+          }
+        }
+      >
+        <div
+          className="sc-cSHVUG iWWnLG"
+          onClick={[Function]}
+          onFocus={[Function]}
+          tabIndex={0}
+          title="bash"
+        >
+          bash
+        </div>
+        <div
+          className="sc-fjdhpX ghCJNo"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="sc-kAzzGY hjGnyC"
+            onClick={[Function]}
+          >
+            +
+          </div>
+        </div>
+      </div>
+      <div
+        className="sc-EHOje dMFuoo"
+        onKeyUp={[Function]}
+        style={
+          Object {
+            "maxHeight": "calc(100% - 60px)",
+            "maxWidth": "100%",
+            "overflowY": "auto",
+          }
+        }
+        tabIndex="0"
+      >
+        <div
+          className="sc-gZMcBi cwkXTh"
+        >
+          <div
+            className="sc-gqjmRU gAcuTz"
+          >
+            <div
+              className="sc-VigVT bYwkqd"
+            >
+              <pre
+                className="sc-gzVnrw duUAwb"
+              >
+                Welcome REA Team - This is a terminal emulator for Toy Robot simulator demo. Start typing below and press ENTER to run the command. 
+
+You may start with 'help'
+              </pre>
+              <div
+                className="sc-htoDjs iQSzyY"
+              >
+                <span
+                  className="sc-dnqmqq dNrvp"
+                >
+                  &gt;
+                </span>
+                <input
+                  className="sc-iwsKbI jLRkOo"
+                  onKeyDown={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="-1"
+                  type="text"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
