@@ -4,9 +4,11 @@ This simulator is built with JavaScript and a terminal emulator using React. Ide
 ## Show me the simulator
 The solution is deployed in Netlify cloud for you to view it in action. Visit this URL https://toy-robot-react.netlify.com/. <br />
 If you would like to run it locally, follow these instructions:
-1. Open a terminal and switch to project directory
-2. Install dependencies using `npm install`
-3. Run `npm start` and go to http://localhost:3000 in browser
+1. You will need Node.js and npm installed on your machine. I have built and tested the application using Node.js version 10.16.3 and npm version 6.9.0. Download link is here https://nodejs.org/download/release/v10.16.3/
+2. Open a terminal and switch to project directory
+3. Install dependencies using `npm install`
+4. Run `npm start` and go to http://localhost:3000 in browser
+5. Run `npm test` and press `a` to see test results
 
 Further details about available scripts and tests are mentioned below.
 
