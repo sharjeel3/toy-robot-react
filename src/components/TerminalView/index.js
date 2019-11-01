@@ -49,7 +49,7 @@ const TerminalView = () => {
           RIGHT: "Turn robot to right",
           REPORT: "Report Robot current position as per PLACE format"
         }}
-        msg="Welcome REA Team - This is a terminal emulator for Toy Robot simulator demo. Start typing below and press ENTER to run the command."
+        msg={`Welcome REA Team - This is a terminal emulator for Toy Robot simulator demo. Start typing below and press ENTER to run the command. \n\nYou may start with 'help'`}
       />
     </div>
   );
