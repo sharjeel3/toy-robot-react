@@ -56,6 +56,7 @@ export function ToyRobot () {
   };
 
   const turnRobotLeft = () => {
+    directionInDegree = getDegrees(directionInDegree, -90);
     return ["", ""];
   };
 

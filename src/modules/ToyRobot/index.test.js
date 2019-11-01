@@ -99,3 +99,54 @@ it("should have RIGHT turn and not change position", () => {
   expect(reportOutput2).toBe("2,1,SOUTH");
   expect(reportError2).toBe("");
 });
+
+it("should have LEFT turn and not change position", () => {
+  const placeProps = { command: "PLACE", args: { _: ["5,3,WEST"] } };
+  toyRobotInstance.getInstructionOutput(placeProps);
+
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const [leftError, leftOutput] = toyRobotInstance.getInstructionOutput(leftProps);
+  expect(leftOutput).toBe("");
+  expect(leftError).toBe("");
+
+  const reportProps = { command: "REPORT", args: { _: [] } };
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("5,3,SOUTH");
+  expect(reportError).toBe("");
+
+  toyRobotInstance.getInstructionOutput(leftProps);
+
+  const [reportError2, reportOutput2] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput2).toBe("5,3,EAST");
+  expect(reportError2).toBe("");
+});
+
+it("should return to original direction with a LEFT and then RIGHT", () => {
+  const placeProps = { command: "PLACE", args: { _: ["4,1,SOUTH"] } };
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const rightProps = { command: "RIGHT", args: { _: [] } };
+  const reportProps = { command: "REPORT", args: { _: [] } };
+
+  toyRobotInstance.getInstructionOutput(placeProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+  toyRobotInstance.getInstructionOutput(rightProps);
+
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("4,1,SOUTH");
+  expect(reportError).toBe("");
+});
+
+it("should return to original direction with a RIGHT and then LEFT", () => {
+  const placeProps = { command: "PLACE", args: { _: ["4,1,EAST"] } };
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const rightProps = { command: "RIGHT", args: { _: [] } };
+  const reportProps = { command: "REPORT", args: { _: [] } };
+
+  toyRobotInstance.getInstructionOutput(placeProps);
+  toyRobotInstance.getInstructionOutput(rightProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("4,1,EAST");
+  expect(reportError).toBe("");
+});
