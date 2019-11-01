@@ -35,17 +35,17 @@ it("should return nothing with successful PLACE", () => {
   expect(reportError).toBe("");
 });
 
-it("should not allow MOVE without PLACE command first", () => {
-  const props = { command: "MOVE", args: { _: [] } };
-  // const getInstructionOutput = new Object(toyRobotModule.getInstructionOutput);
-  const [error, output, stuff] = toyRobotInstance.getInstructionOutput(props);
+it("should return error with failed PLACE command", () => {
+  const props = { command: "PLACE", args: { _: ["2,1"] } };
+  const [error, output] = toyRobotInstance.getInstructionOutput(props);
   expect(output).toBe("");
   expect(error).not.toBe("");
 });
 
-it("should return error with failed PLACE command", () => {
-  const props = { command: "PLACE", args: { _: ["2,1"] } };
-  const [error, output] = toyRobotInstance.getInstructionOutput(props);
+it("should not allow MOVE without PLACE command first", () => {
+  const props = { command: "MOVE", args: { _: [] } };
+  // const getInstructionOutput = new Object(toyRobotModule.getInstructionOutput);
+  const [error, output, stuff] = toyRobotInstance.getInstructionOutput(props);
   expect(output).toBe("");
   expect(error).not.toBe("");
 });
