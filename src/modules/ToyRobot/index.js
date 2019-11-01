@@ -17,6 +17,11 @@ const validateUnits = (x, y) => {
   return (isValid(x) && isValid(y))
 };
 
+const getDegrees = (degree, variance) => {
+  // avoiding negative degrees and 360deg
+  return (360 + degree + variance)%360;
+};
+
 export function ToyRobot () {
   let unitX,
     unitY,
@@ -55,6 +60,7 @@ export function ToyRobot () {
   };
 
   const turnRobotRight = () => {
+    directionInDegree = getDegrees(directionInDegree, 90);
     return ["", ""];
   };
 

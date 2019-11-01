@@ -78,3 +78,24 @@ it("should MOVE after PLACE", () => {
   expect(reportOutput).toBe("3,1,EAST");
   expect(reportError).toBe("");
 });
+
+it("should have RIGHT turn and not change position", () => {
+  const placeProps = { command: "PLACE", args: { _: ["2,1,NORTH"] } };
+  toyRobotInstance.getInstructionOutput(placeProps);
+
+  const rightProps = { command: "RIGHT", args: { _: [] } };
+  const [rightError, rightOutput] = toyRobotInstance.getInstructionOutput(rightProps);
+  expect(rightOutput).toBe("");
+  expect(rightError).toBe("");
+
+  const reportProps = { command: "REPORT", args: { _: [] } };
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("2,1,EAST");
+  expect(reportError).toBe("");
+
+  toyRobotInstance.getInstructionOutput(rightProps);
+
+  const [reportError2, reportOutput2] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput2).toBe("2,1,SOUTH");
+  expect(reportError2).toBe("");
+});
