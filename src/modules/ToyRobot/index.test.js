@@ -171,3 +171,85 @@ it("should return to original direction with a RIGHT and then LEFT", () => {
   expect(reportOutput).toBe("4,1,EAST");
   expect(reportError).toBe("");
 });
+
+it(`should output 3,3,NORTH with these inputs\n
+  PLACE 1,2,EAST\n
+  MOVE\n
+  MOVE\n
+  LEFT\n
+  MOVE\n
+  REPORT`, () => {
+  const placeProps = { command: "PLACE", args: { _: ["1,2,EAST"] } };
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const moveProps = { command: "MOVE", args: { _: [] } };
+  const reportProps = { command: "REPORT", args: { _: [] } };
+
+  toyRobotInstance.getInstructionOutput(placeProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("3,3,NORTH");
+  expect(reportError).toBe("");
+});
+
+it(`should output 2,2,WEST with these inputs\n
+  PLACE 2,1,SOUTH\n
+  MOVE\n
+  RIGHT\n
+  RIGHT\n
+  MOVE\n
+  MOVE\n
+  LEFT\n
+  REPORT`, () => {
+  const placeProps = { command: "PLACE", args: { _: ["2,1,SOUTH"] } };
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const rightProps = { command: "RIGHT", args: { _: [] } };
+  const moveProps = { command: "MOVE", args: { _: [] } };
+  const reportProps = { command: "REPORT", args: { _: [] } };
+
+  toyRobotInstance.getInstructionOutput(placeProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(rightProps);
+  toyRobotInstance.getInstructionOutput(rightProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("2,2,WEST");
+  expect(reportError).toBe("");
+});
+
+it(`should output 4,0,EAST with these inputs\n
+  PLACE 4,3,WEST\n
+  LEFT\n
+  MOVE\n
+  MOVE\n
+  MOVE\n
+  MOVE\n
+  MOVE\n
+  MOVE\n
+  LEFT\n
+  REPORT`, () => {
+  const placeProps = { command: "PLACE", args: { _: ["4,3,WEST"] } };
+  const leftProps = { command: "LEFT", args: { _: [] } };
+  const moveProps = { command: "MOVE", args: { _: [] } };
+  const reportProps = { command: "REPORT", args: { _: [] } };
+
+  toyRobotInstance.getInstructionOutput(placeProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(moveProps);
+  toyRobotInstance.getInstructionOutput(leftProps);
+
+  const [reportError, reportOutput] = toyRobotInstance.getInstructionOutput(reportProps);
+  expect(reportOutput).toBe("4,0,EAST");
+  expect(reportError).toBe("");
+});
