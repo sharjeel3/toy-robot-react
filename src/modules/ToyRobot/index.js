@@ -12,9 +12,15 @@ import {
 
 const isNil = value => typeof value === "undefined" || value === null;
 
+const isNotNumber = value => isNil(value) || isNaN(value) || `${value}`.trim() === "";
+
+const isValidUnit = value => (value >= MIN_UNIT && value <= MAX_UNIT);
+
 const validateUnits = (x, y) => {
-  const isValid = value => (value >= MIN_UNIT && value <= MAX_UNIT);
-  return (isValid(x) && isValid(y))
+  if (isNotNumber(x) || isNotNumber(y)) {
+    return false;
+  }
+  return (isValidUnit(Number(x)) && isValidUnit(Number(y)))
 };
 
 const getDegrees = (degree, variance) => {
@@ -35,8 +41,11 @@ export function ToyRobot () {
 
   const placeRobot = (place = "") => {
     const [xPlace, yPlace, placeDirection] = typeof place === "string" ? place.split(",") : "";
-    if (isNil(xPlace) || isNil(yPlace) || isNil(placeDirection) || isNil(DIRECTIONS_MAP[placeDirection])) {
-      return ["ERROR: Invalid position for PLACE", ""];
+    if (!validateUnits(xPlace, yPlace)) {
+      return ["ERROR: Invalid position for PLACE. Try units within 0 to 5 range", ""];
+    }
+    if (isNil(placeDirection) || isNil(DIRECTIONS_MAP[placeDirection])) {
+      return ["ERROR: Invalid direction for PLACE. Try one of EAST, WEST, NORTH or SOUTH", ""];
     }
     setUnits(xPlace, yPlace);
     directionInDegree = DIRECTIONS_MAP[placeDirection];

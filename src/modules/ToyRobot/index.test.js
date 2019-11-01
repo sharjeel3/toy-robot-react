@@ -42,6 +42,27 @@ it("should return error with failed PLACE command", () => {
   expect(error).not.toBe("");
 });
 
+it("should not PLACE at a position outside 5x5 units", () => {
+  const props = { command: "PLACE", args: { _: ["7,1,WEST"] } };
+  const [error, output] = toyRobotInstance.getInstructionOutput(props);
+  expect(output).toBe("");
+  expect(error).not.toBe("");
+});
+
+it("should not PLACE at a position with invalid direction", () => {
+  const props = { command: "PLACE", args: { _: ["4,1,INVALID"] } };
+  const [error, output] = toyRobotInstance.getInstructionOutput(props);
+  expect(output).toBe("");
+  expect(error).not.toBe("");
+});
+
+it("should not PLACE at position with incomplete units and direction", () => {
+  const props = { command: "PLACE", args: { _: ["4,"] } };
+  const [error, output] = toyRobotInstance.getInstructionOutput(props);
+  expect(output).toBe("");
+  expect(error).not.toBe("");
+});
+
 it("should not allow MOVE without PLACE command first", () => {
   const props = { command: "MOVE", args: { _: [] } };
   // const getInstructionOutput = new Object(toyRobotModule.getInstructionOutput);
